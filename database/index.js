@@ -14,13 +14,13 @@ db.once('open', function() {
     forks: Number,
     language: String,
     owner_id: Number,
-    owner_url: String
+    owner_url: String,
     owner_login: String,
     owner_avatarUrl: String,
   });
-
-
   let Repo = mongoose.model('Repo', repoSchema);
+
+
 
   const marcus = new Repo({
     id: 14563,
@@ -34,21 +34,29 @@ db.once('open', function() {
     owner_avatarUrl: "https://avatars0.githubusercontent.com/u/582331?v=3"
   })
 
-})
-  // let save = (err, repos) => {
-  //   // TODO: Your code here
-  //   // This function should save a repo or repos to
-  //   // the MongoDB
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // }
 
-  marcus.save = (err, marcus) => {
-    if (err) {console.log(err);}
-    else {
-      console.log('Successfully saved marcus repo: ', marcus);
-    }
-  }
+  let save = (repos) => {
+    // TODO: Your code here
+    // This function should save a repo or repos to
+    // the MongoDB
+    console.log(repos);
+    // repos.forEach((repo) => {
+      //   if (err) {
+    //     console.log(err);
+    //   } else {
+      //     repo.db.save(repo);
+      //     console.log(`Successfully saved ${repo.owner_login}'s repo to the database!`);
+      //     repo.db.end();
+      //   }
+    // })
+    //   marcus.save = (err, marcus) => {
+      //     if (err) {console.log(err);}
+      //     else {
+        //       console.log('Successfully saved marcus repo!';
+        //     }
+        //   }
+      }
 
-module.exports.save = save;
+
+      module.exports.save = save;
+    })

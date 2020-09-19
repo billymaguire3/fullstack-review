@@ -37,7 +37,15 @@ app.post('/repos', function (req, res) {
 
 app.get('/repos', function (req, res) {
 
-  db.gatherTop25();
+  db.gatherTop25()
+    .then((response) => {
+      this.setState({
+        repos: response.data
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
 
 });
 

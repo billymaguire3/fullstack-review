@@ -37,6 +37,12 @@ componentDidMount(event) {
     axios.get('/repos')
       .then((response) => {
         console.log('successfully made it inside axios get request', response);
+        return response;
+      })
+      .then((reposArr) => {
+        this.setState({
+          repos: reposArr
+        })
       })
       .catch((error) => {
         console.log(error);

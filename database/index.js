@@ -46,13 +46,15 @@ db.once('open', function() {
         if (err) {
           console.log(err);
         } else {
-          console.log('Successfully saved repo to database:',repo);
+          console.log('Made it inside repo.save method!');
         }
       }
-      repo.save(repo);
-      console.log(repo);
-      console.log(`Successfully saved ${repo.owner_login}'srepo to the database!`);
-      db.end();
+    })
+    Repo.insertMany(repos, (err) => {
+      if (err) {console.log(err);}
+      else {
+        console.log('Successfully saved all repos in insertMany!');
+      }
     })
   }
   // save()

@@ -4,6 +4,7 @@ let port = 1128;
 var bodyParser = require('body-parser')
 const github = require('../helpers/github.js');
 const db = require('../database/index.js');
+const axios = require('axios').default;
 
 app.use('/', express.static(__dirname + '/../client/dist'));
 
@@ -22,7 +23,7 @@ app.post('/repos', function (req, res) {
   github.getReposByUsername(req.body.username)
     .then((response) => {
       // console.log('successful get request to github API');
-      res.status(200).send(response.data)
+      res.status(201).send(response.data)
       return response.data;
     })
     .then((repoData) => {
@@ -35,8 +36,9 @@ app.post('/repos', function (req, res) {
 
 
 app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
+
+  db.gatherTop25();
+
 });
 
 app.listen(port, function() {

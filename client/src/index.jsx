@@ -14,20 +14,32 @@ class App extends React.Component {
   }
 
 // Need a componentDidMount method and invoke our getRepos method?
+componentDidMount(event) {
+  this.getRepos();
+}
 
 
   search(term) {
     console.log(`${term} was searched`);
     // TODO: Make a post request using ajax or axios to the correct server endpoint
-    const context = this;
     axios.post('/repos', {username: term})
       .then((response) => {
-        context.setState({
+        this.setState({
           repos: response.data
         })
       })
       .catch((error) => {
-        console.log;
+        console.log(error);
+      })
+  }
+
+  getRepos(term) {
+    axios.get('/repos')
+      .then((response) => {
+        console.log('successfully made it inside axios get request', response);
+      })
+      .catch((error) => {
+        console.log(error);
       })
   }
 

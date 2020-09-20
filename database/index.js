@@ -13,6 +13,7 @@ db.once('open', function() {
     id: Number,
     full_name: String,
     description: String,
+    html_url: String,
     forks: Number,
     language: String,
     owner_id: Number,

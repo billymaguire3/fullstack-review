@@ -8,6 +8,7 @@ const RepoList = ({repos}) => {
       return (
         <RepoListEntry
         fullname={repo.full_name}
+        repoUrl={repo.html_url}
         forks={repo.forks}
         key={`${repo.full_name} ${key}`}
         />

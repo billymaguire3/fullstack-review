@@ -18,7 +18,6 @@ componentDidMount(event) {
   this.getRepos();
 }
 
-
   search(term) {
     console.log(`${term} was searched`);
     // TODO: Make a post request using ajax or axios to the correct server endpoint
@@ -36,6 +35,7 @@ componentDidMount(event) {
   getRepos() {
     axios.get('/repos')
       .then((response) => {
+        console.log("Response from index get Repo's:", response);
         this.setState({
           repos: response.data
         })

@@ -20,7 +20,7 @@ const RepoList = ({repos}) => {
 
   <div>
     <h4> Repo List Component </h4>
-    There are {repos.length} repos.
+    There are {mappedRepos.length} repos.
     <ul>
       {mappedRepos}
     </ul>

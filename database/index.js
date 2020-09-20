@@ -51,7 +51,7 @@ db.once('open', function() {
     // console.log('Made it to gatherTop25 fn');
     return Repo.find({}).
       where('forks').gt(0).
-      limit(25).
+      limit(10).
       exec();
   }
 

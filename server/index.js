@@ -23,6 +23,7 @@ app.post('/repos', function (req, res) {
   github.getReposByUsername(req.body.username)
     .then((response) => {
       // console.log('successful get request to github API');
+      console.log(response.data.length);
       res.status(201).send(response.data)
       return response.data;
     })
@@ -39,15 +40,15 @@ app.get('/repos', function (req, res) {
 
   db.gatherTop25()
   .then((response) => {
-    console.log("Response: ", response.map((doc) => {
+    const result = response.map((doc) => {
       return (doc._doc);
-    }));
+    });
+    res.send(result);
       // res.send(response.data)
     })
     .catch((err) => {
       console.log(err);
     })
-
   });
 
 

@@ -38,16 +38,18 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
 
   db.gatherTop25()
-    .then((response) => {
-      this.setState({
-        repos: response.data
-      })
+  .then((response) => {
+    console.log("Response: ", response.map((doc) => {
+      return (doc._doc);
+    }));
+      // res.send(response.data)
     })
     .catch((err) => {
       console.log(err);
     })
 
-});
+  });
+
 
 app.listen(port, function() {
   console.log(`listening on port http://localhost:${port}`);

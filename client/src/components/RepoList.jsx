@@ -3,12 +3,17 @@ import RepoListEntry from './RepoListEntry.jsx'
 
 const RepoList = ({repos}) => {
 
-  const mappedRepos = repos.map((repo, key) => (
-    <RepoListEntry
-      fullname={repo.full_name}
-      key={`${repo.full_name} ${key}`}
-    />
-  ))
+  const mappedRepos = repos.map((repo, key) => {
+    if (repo.forks > 0) {
+      return (
+        <RepoListEntry
+        fullname={repo.full_name}
+        forks={repo.forks}
+        key={`${repo.full_name} ${key}`}
+        />
+        )
+    }
+  })
 
   return (
 

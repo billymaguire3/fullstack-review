@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
 
 
+
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -40,17 +41,17 @@ db.once('open', function() {
     Repo.insertMany(repos, (err) => {
       if (err) {console.log(err);}
       else {
-        console.log('Successfully saved all repos in insertMany!');
+        console.log('Successfully inserted Repos to mongoDB');
       }
     })
   }
 
   let gatherTop25 = () => {
-    console.log('Made it to gatherTop25 fn');
-    return (Repo.find().
+    // console.log('Made it to gatherTop25 fn');
+    return Repo.find({}).
       where('forks').gt(0).
       limit(25).
-      exec());
+      exec();
   }
 
       module.exports.save = save;
